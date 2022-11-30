@@ -5,6 +5,14 @@ import { IBaseSensor } from "./alarm";
 
 export default class Sensor implements IBaseSensor{
 
+	private highPressureThreshold;
+	private lowPressureThreshold;
+
+	public constructor(low: number, high: number) {
+		this.highPressureThreshold = high;
+		this.lowPressureThreshold = low;
+	}
+
 	public popNextPressurePsiValue(): number {
 		const pressureTelemetryValue = this.samplePressure();
 
@@ -15,6 +23,11 @@ export default class Sensor implements IBaseSensor{
 		// placeholder implementation that simulate a real sensor in a real tire
 		const pressureTelemetryValue = Math.floor(6 * Math.random() * Math.random());
 		return pressureTelemetryValue;
+	}
+
+	public isSensorOn(): boolean {
+		const psiPressureValue = this.popNextPressurePsiValue();
+		return psiPressureValue < this.lowPressureThreshold || this.highPressureThreshold < psiPressureValue;
 	}
 
 	private offset() { return 16; }
