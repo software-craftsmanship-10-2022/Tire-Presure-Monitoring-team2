@@ -1,7 +1,7 @@
 // The reading of the pressure value from the sensor is simulated in this implementation.
 // Because the focus of the exercise is on the other class.
 
-import { IBaseSensor } from "./alarm";
+import {IBaseSensor} from "./IBaseSensor";
 
 export default class Sensor implements IBaseSensor{
 

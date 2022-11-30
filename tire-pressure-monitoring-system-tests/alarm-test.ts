@@ -1,8 +1,7 @@
 import { expect } from 'chai';
 import 'mocha';
-import Alarm, { IBaseSensor } from '../tire-pressure-monitoring-system/alarm';
-
-
+import Alarm from '../tire-pressure-monitoring-system/alarm';
+import {IBaseSensor} from '../tire-pressure-monitoring-system/IBaseSensor';
 
 function sensorGenerator(enableAlarm: boolean): IBaseSensor {
 	class dummySensor implements IBaseSensor{
@@ -31,29 +30,4 @@ describe('Tyre Pressure Monitoring System', () => {
 		alarm.check();
 		expect(alarm.isAlarmOn()).eql(false);
 	});
-
-	// it('Alarm should turn on one point under low pressure treshold', () => {
-	// 	const alarm = new Alarm(sensorGenerator(15),16);
-	// 	alarm.check();
-	// 	expect(alarm.isAlarmOn()).eql(true);
-	// });
-
-	// it('Alarm should not turn on when pressure is same as minimum treshold', () => {
-	// 	const alarm = new Alarm(sensorGenerator(17));
-	// 	alarm.check();
-	// 	expect(alarm.isAlarmOn()).eql(false);
-	// });
-
-	// it('Alarm should turn on one point higher on high pressure treshold', () => {
-	// 	const alarm = new Alarm(sensorGenerator(23),22);
-	// 	alarm.check();
-	// 	expect(alarm.isAlarmOn()).eql(true);
-	// });
-
-	// it('Alarm should not turn on when pressure is same as maximum treshold', () => {
-	// 	const alarm = new Alarm(sensorGenerator(21));
-	// 	alarm.check();
-	// 	expect(alarm.isAlarmOn()).eql(false);
-	// });
-
 });

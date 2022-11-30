@@ -1,6 +1,5 @@
-export interface IBaseSensor {
-	isSensorOn(): boolean;
-}
+import {IBaseSensor} from "./IBaseSensor";
+
 export default class Alarm {
 	private sensor: IBaseSensor;
 	private alarmOn: boolean;
